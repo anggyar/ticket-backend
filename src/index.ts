@@ -1,9 +1,12 @@
 import express from "express";
 import router from "./routes/api";
 
-const app = express();
+import bodyParser from "body-parser";
 
+const app = express();
 const PORT = 3004;
+
+app.use(bodyParser.json());
 
 app.use("/api/", router);
 
