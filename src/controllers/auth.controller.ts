@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import * as Yup from "yup";
 
+import UserModel from "../models/user.model";
+
 type TRegister = {
   fullName: string;
   username: string;
@@ -35,14 +37,17 @@ export default {
         confirmPassword,
       });
 
+      const result = await UserModel.create({
+        fullName,
+        email,
+        username,
+        password,
+      });
+
       // Kembalikan status 200 dan data user (kecuali password)
       res.status(200).json({
         message: "Success Registration",
-        data: {
-          fullName,
-          username,
-          email,
-        },
+        data: result,
       });
     } catch (error) {
       // Jika validasi gagal, kembalikan status 400 dan pesan error
