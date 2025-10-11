@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { encrypt } from "../utils/encryption";
 
 export interface User {
   fullName: string;
@@ -52,6 +53,22 @@ const UserSchema = new Schema<User>(
     timestamps: true,
   }
 );
+
+// Encrypt password before saving the user
+UserSchema.pre("save", function (next) {
+  const user = this;
+  user.password = encrypt(user.password);
+
+  next();
+});
+
+// Method to hide password when returning user object
+UserSchema.methods.toJSON = function () {
+  const user = this.toObject();
+
+  delete user.password;
+  return user;
+};
 
 const UserModel = mongoose.model("User", UserSchema);
 export default UserModel;
