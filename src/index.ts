@@ -13,7 +13,7 @@ async function init() {
 
     // Initialize Express app
     const app = express();
-    const PORT = 3004;
+    const PORT = 3003;
 
     // Middleware
     app.use(bodyParser.json());
