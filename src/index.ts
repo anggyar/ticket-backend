@@ -2,8 +2,9 @@ import express from "express";
 import router from "./routes/api";
 
 import bodyParser from "body-parser";
-
+import cors from "cors";
 import db from "./utils/database";
+import docs from "./docs/route";
 
 async function init() {
   try {
@@ -13,6 +14,7 @@ async function init() {
 
     // Initialize Express app
     const app = express();
+    app.use(cors());
     const PORT = 3003;
 
     // Middleware
@@ -26,6 +28,8 @@ async function init() {
     });
 
     app.use("/api/", router);
+
+    docs(app);
 
     // Start the server
     app.listen(PORT, () => {
