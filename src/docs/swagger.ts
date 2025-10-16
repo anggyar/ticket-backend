@@ -28,6 +28,16 @@ const doc = {
         identifier: "anggyar",
         password: "12341234",
       },
+      RegisterRequest: {
+        fullName: "Gian gain",
+        username: "Gian2002",
+        email: "gian2002@yopmail.com",
+        password: "aeonDisk98!",
+        confirmPassword: "aeonDisk98!",
+      },
+      ActivationRequest: {
+        code: "abcde",
+      },
     },
   },
 };

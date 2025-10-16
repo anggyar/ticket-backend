@@ -115,6 +115,37 @@
           }
         ]
       }
+    },
+    "/auth/activation": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -139,6 +170,46 @@
         },
         "xml": {
           "name": "LoginRequest"
+        }
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "Gian gain"
+          },
+          "username": {
+            "type": "string",
+            "example": "Gian2002"
+          },
+          "email": {
+            "type": "string",
+            "example": "gian2002@yopmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "aeonDisk98!"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": "aeonDisk98!"
+          }
+        },
+        "xml": {
+          "name": "RegisterRequest"
+        }
+      },
+      "ActivationRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "abcde"
+          }
+        },
+        "xml": {
+          "name": "ActivationRequest"
         }
       }
     }
