@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { encrypt } from "../utils/encryption";
 import { sendMail, renderMailHtml } from "../utils/mail/mail";
-import { name } from "ejs";
+
 import { CLIENT_HOST, EMAIL_SMTP_USER } from "../utils/env";
 
 export interface User {
