@@ -137,7 +137,7 @@ export default {
       }
 
       const token = generateToken({
-        id: userByIdentifier.id,
+        id: userByIdentifier._id,
         role: userByIdentifier.role,
       });
 
@@ -168,7 +168,7 @@ export default {
       const result = await UserModel.findById(user?.id);
 
       res.status(200).json({
-        message: "Success",
+        message: "Success get user profile",
         data: result,
       });
     } catch (error) {
